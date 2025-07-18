@@ -45,7 +45,7 @@ const LeftSideBar: React.FC<LeftSideBarProps> = ({
             iconPosition="left"
             color="#1a1a1a"
             text="New Message"
-            className="mt-4 w-full rounded-sm font-medium text-sm cursor-pointer"
+            className="mt-4 w-full rounded-sm font-medium text-sm cursor-pointer "
           />
         </div>
         <div className="h-[calc(82vh-1px)] overflow-y-auto">
