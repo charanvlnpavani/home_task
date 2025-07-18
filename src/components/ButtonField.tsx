@@ -7,12 +7,14 @@ type ButtonFieldProps = {
   color?: string;
   text: string;
   className?: string;
+  onClick?: () => void;
 };
 
 const ButtonField: React.FC<ButtonFieldProps> = ({
   icon,
-  iconPosition = "left",
-  color = "#1a1a1a",
+  iconPosition,
+  color,
+  onClick,
   text,
   className,
 }) => {
@@ -20,6 +22,7 @@ const ButtonField: React.FC<ButtonFieldProps> = ({
     <Button
       className={`flex items-center justify-center gap-2 ${className}`}
       style={{ backgroundColor: color }}
+      onClick={onClick}
     >
       {iconPosition === "left" && icon}
       {text}

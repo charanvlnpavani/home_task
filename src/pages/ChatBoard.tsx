@@ -1,5 +1,6 @@
 import PatientDetails from "@/components/PatientDetails";
 import React from "react";
+import PatientContact from "./PatientContact";
 
 type Patient = {
   name: string;
@@ -15,6 +16,7 @@ const ChatBoard: React.FC<ChatBoardProps> = ({ patient }) => {
   return (
     <div>
       <PatientDetails patientName={patient.name} dob={patient.dob} />
+      <PatientContact />
     </div>
   );
 };
