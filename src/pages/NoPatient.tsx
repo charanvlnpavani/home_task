@@ -17,7 +17,7 @@ const NoPatient = () => {
           iconPosition="left"
           color="#1a1a1a"
           text="Add Patient"
-          className="mt-4 rounded-sm font-medium text-sm cursor-pointer"
+          className="mt-4 rounded-sm font-medium text-sm cursor-pointer "
         />
       </div>
     </Card>
