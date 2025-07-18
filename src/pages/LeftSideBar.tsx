@@ -39,13 +39,14 @@ const LeftSideBar: React.FC<LeftSideBarProps> = ({
             icon={SearchIcon}
             position="left"
             onChange={(e) => setSearchTerm(e.target.value)}
+            iconDisplay={true}
           />
           <ButtonField
             icon={<Plus />}
             iconPosition="left"
             color="#1a1a1a"
             text="New Message"
-            className="mt-4 w-full rounded-sm font-medium text-sm cursor-pointer "
+            className="mt-4 w-full rounded-sm font-medium text-sm cursor-pointer  "
           />
         </div>
         <div className="h-[calc(82vh-1px)] overflow-y-auto">
