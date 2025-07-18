@@ -18,7 +18,7 @@ const InputField: React.FC<InputFieldProps> = (item) => {
             <item.icon className="text-gray-500 mr-2 w-5 h-5" />
 
             <Input
-              className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-500 placeholder:text-gray-400"
+              className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-900 placeholder:text-gray-400"
               placeholder={item.placeholder}
               onChange={item.onChange}
             />
