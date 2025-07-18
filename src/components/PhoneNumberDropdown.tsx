@@ -35,7 +35,7 @@ export const PhoneNumberDropdown: React.FC<PhoneNumberDropdownProps> = ({
       <div className="focus:border rounded-md p-1 w-full  hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 text-black focus:ring-offset-2">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="flex items-center justify-evenly gap-2 border rounded-md bg-white cursor-pointer px-1  w-full h-10 border-gray-300">
+            <button className="flex items-center justify-evenly gap-2 border rounded-md bg-white cursor-pointer px-1  w-full h-10 border-gray-300 hover:shadow-md">
               <div className="flex items-center gap-2">
                 {phoneNumbers[selected].flag}
                 <span>{phoneNumbers[selected].number}</span>
@@ -63,14 +63,14 @@ export const PhoneNumberDropdown: React.FC<PhoneNumberDropdownProps> = ({
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={onAdd} className="text-primary">
-              <ButtonField
-                icon={<Plus />}
-                iconPosition="left"
-                text="Add Phone Number"
-                className=" rounded-sm font-medium text-sm cursor-pointer text-black w-full"
-              />
-            </DropdownMenuItem>
+            <ButtonField
+              icon={<Plus />}
+              iconPosition="left"
+              text="Add Phone Number"
+              color="white"
+              className=" rounded-sm font-medium text-sm cursor-pointer text-black w-full hover:border hover:border-gray-300"
+              onClick={onAdd}
+            />
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

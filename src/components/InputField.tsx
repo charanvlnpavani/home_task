@@ -7,42 +7,75 @@ interface InputFieldProps {
   icon: React.ElementType;
   position: "left" | "right";
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  iconDisplay?: boolean;
+  className?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = (item) => {
   return (
-    <div className="w-full flex  gap-3 justify-between items-center ">
-      <div className="w-full h-8 flex items-center rounded-sm border border-gray-300 bg-white mt-2 px-2">
-        {item.position === "left" ? (
-          <>
-            <item.icon className="text-gray-500 mr-2 w-5 h-5" />
+    <>
+      {item.iconDisplay ? (
+        <div className="w-full flex  gap-3 justify-between items-center ">
+          <div
+            className={`w-full h-8 flex items-center rounded-sm border border-gray-300 bg-white mt-2 px-2 ${item.className}`}
+          >
+            {item.position === "left" ? (
+              <>
+                <item.icon className="text-gray-500 mr-2 w-5 h-5" />
 
-            <Input
-              className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-900 placeholder:text-gray-400"
-              placeholder={item.placeholder}
-              onChange={item.onChange}
+                <Input
+                  className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-900 placeholder:text-gray-400"
+                  placeholder={item.placeholder}
+                  onChange={item.onChange}
+                />
+              </>
+            ) : (
+              <>
+                <Input
+                  className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-500 placeholder:text-gray-400"
+                  placeholder={item.placeholder}
+                  onChange={item.onChange}
+                />
+                <item.icon className="ml-2 w-5 h-5 text-black" />
+              </>
+            )}
+          </div>
+          <div className="mt-2">
+            <ButtonIcon
+              variant="outline"
+              icon={Funnel}
+              size="lg"
+              className="p-3 rounded-sm h-8 cursor-pointer hover:bg-gray-500"
             />
-          </>
-        ) : (
-          <>
-            <Input
-              className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-500 placeholder:text-gray-400"
-              placeholder={item.placeholder}
-              onChange={item.onChange}
-            />
-            <item.icon className="ml-2 w-5 h-5 text-black" />
-          </>
-        )}
-      </div>
-      <div className="mt-2">
-        <ButtonIcon
-          variant="outline"
-          icon={Funnel}
-          size="lg"
-          className="p-3 rounded-sm h-8 cursor-pointer hover:bg-gray-500"
-        />
-      </div>
-    </div>
+          </div>
+        </div>
+      ) : (
+        <div className="w-full flex  gap-3 justify-between items-center ">
+          <div className="w-full h-8 flex items-center rounded-sm border border-gray-300 bg-white mt-2 px-2">
+            {item.position === "left" ? (
+              <>
+                <item.icon className="text-gray-500 mr-2 w-5 h-5" />
+
+                <Input
+                  className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-900 placeholder:text-gray-400"
+                  placeholder={item.placeholder}
+                  onChange={item.onChange}
+                />
+              </>
+            ) : (
+              <>
+                <Input
+                  className="border-none shadow-none focus-visible:ring-0 p-0 h-10 text-gray-500 placeholder:text-gray-400"
+                  placeholder={item.placeholder}
+                  onChange={item.onChange}
+                />
+                <item.icon className="ml-2 w-5 h-5 text-black" />
+              </>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
