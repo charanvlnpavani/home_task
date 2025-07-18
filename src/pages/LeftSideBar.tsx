@@ -3,6 +3,7 @@ import { Plus, SearchIcon } from "lucide-react";
 import ButtonField from "@/components/ButtonField";
 import InputField from "@/components/InputField";
 import { PersonCard } from "@/components/PersonCard";
+import NoPatient from "./NoPatient";
 
 type PersonCardData = {
   name: string;
@@ -48,16 +49,24 @@ const LeftSideBar: React.FC<LeftSideBarProps> = ({
           />
         </div>
         <div className="h-[calc(82vh-1px)] overflow-y-auto">
-          {filteredPersons.map((person, index) => (
-            <PersonCard
-              key={index}
-              name={person.name}
-              dob={person.dob}
-              notifications={person.notifications}
-              href={person.href}
-              onClick={() => onSelectPatient(person)}
-            />
-          ))}
+          {filteredPersons.length === 0 ? (
+            <div className="text-center text-gray-500 mt-4">
+              <NoPatient />
+            </div>
+          ) : (
+            filteredPersons.map((person, index) => (
+              <>
+                <PersonCard
+                  key={index}
+                  name={person.name}
+                  dob={person.dob}
+                  notifications={person.notifications}
+                  href={person.href}
+                  onClick={() => onSelectPatient(person)}
+                />
+              </>
+            ))
+          )}
         </div>
       </div>
     </div>
