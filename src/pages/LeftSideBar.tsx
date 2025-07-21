@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import { Plus, SearchIcon } from "lucide-react";
+import { Plus, SearchIcon, User } from "lucide-react";
 import ButtonField from "@/components/ButtonField";
 import InputField from "@/components/InputField";
 import { PersonCard } from "@/components/PersonCard";
 import NoPatient from "./NoPatient";
-
-type PersonCardData = {
-  name: string;
-  dob: string;
-  notifications: number;
-  href: string;
-};
+import type { PersonCardData } from "@/context/PatientContext";
 
 type LeftSideBarProps = {
   personCardData: PersonCardData[];
@@ -49,23 +43,28 @@ const LeftSideBar: React.FC<LeftSideBarProps> = ({
             className="mt-4 w-full rounded-sm font-medium text-sm cursor-pointer  "
           />
         </div>
+        <hr className="my-4" />
         <div className="h-[calc(82vh-1px)] overflow-y-auto">
           {filteredPersons.length === 0 ? (
             <div className="text-center text-gray-500 mt-4">
-              <NoPatient />
+              <NoPatient
+                title="No Patient Found"
+                description="Please add a patient to start chatting."
+                logo={User}
+                buttonName="Add Patient"
+              />
             </div>
           ) : (
             filteredPersons.map((person, index) => (
-              <>
+              <div key={index}>
                 <PersonCard
-                  key={index}
                   name={person.name}
                   dob={person.dob}
                   notifications={person.notifications}
                   href={person.href}
                   onClick={() => onSelectPatient(person)}
                 />
-              </>
+              </div>
             ))
           )}
         </div>

@@ -16,8 +16,6 @@ interface PatientContactProps {
 
 const PatientContact: React.FC<PatientContactProps> = ({ phoneNumbers }) => {
   const [selected, setSelected] = useState(0);
-
-  // Handle empty phoneNumbers array
   if (!phoneNumbers || phoneNumbers.length === 0) {
     return (
       <div className="w-full justify-between flex flex-row ">

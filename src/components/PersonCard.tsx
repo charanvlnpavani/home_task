@@ -1,9 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
+import { useContext } from "react";
+import { PatientContext } from "@/context/PatientContext";
 
 interface PersonCardProps {
-  key: number;
   name: string;
   dob: string;
   notifications?: number;
@@ -18,11 +19,14 @@ export function PersonCard({
   onClick,
   href,
 }: PersonCardProps) {
+  const context = useContext(PatientContext);
+  const isSelected = context?.name === name;
+
   return (
     <Card
-      className={`flex flex-row my-5 items-center justify-between p-4 mb-2 cursor-pointer hover:shadow-md rounded-sm${
+      className={`flex flex-row my-2 items-center justify-between py-4  w-90 mx-auto cursor-pointer hover:shadow-md rounded-sm${
         notifications ? "border rounded-sm hover:shadow-md" : ""
-      }`}
+      } ${isSelected ? "ring-1 ring-gray-300 bg-gray-100" : ""}`}
       onClick={onClick}
     >
       <CardContent className="flex flex-col flex-1">
@@ -44,7 +48,7 @@ export function PersonCard({
           </div>
         </div>
 
-        <span className="text-sm text-muted-foreground">DOB: {dob}</span>
+        <span className="text-xs text-muted-foreground">DOB: {dob}</span>
       </CardContent>
     </Card>
   );
