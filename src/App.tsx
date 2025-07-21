@@ -1,4 +1,3 @@
-import React from "react";
 import CommunicationPage from "./pages/CommunicationPage";
 function App() {
   return (

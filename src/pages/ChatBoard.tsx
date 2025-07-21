@@ -1,48 +1,27 @@
 import PatientDetails from "@/components/PatientDetails";
-import React from "react";
-import InputField from "@/components/InputField";
-import { Search } from "lucide-react";
+import React, { useContext } from "react";
+import ChatMessage from "./ChatMessage";
+import { PatientContext } from "@/context/PatientContext";
 
-type Patient = {
-  name: string;
-  dob: string;
-  phonenumbers: {
-    number: string;
-    label: string;
-    flag: React.ReactNode;
-    primary?: boolean;
-  }[];
-  href: string;
-};
+const ChatBoard: React.FC = () => {
+  const context = useContext(PatientContext);
 
-type ChatBoardProps = {
-  patient: Patient | null;
-};
+  if (!context) return null;
 
-const ChatBoard: React.FC<ChatBoardProps> = ({ patient }) => {
-  if (!patient) return null;
   return (
-    <>
-      <div className="px-4 pb-2">
+    <div className="h-full flex flex-col">
+      <div className="flex-shrink-0 px-4 pb-2">
         <PatientDetails
-          patientName={patient.name}
-          dob={patient.dob}
-          phonenumbers={patient.phoneNumbers}
+          patientName={context.name}
+          dob={context.dob}
+          phonenumbers={context.phoneNumbers || []}
         />
       </div>
       <hr />
-      <div className="px-4 py-2">
-        <InputField
-          placeholder="Type a message..."
-          icon={Search}
-          position="left"
-          onChange={() => {}}
-          iconDisplay={false}
-          className="w-full "
-        />
+      <div className="flex-1 min-h-0">
+        <ChatMessage />
       </div>
-      <hr className="py-2" />
-    </>
+    </div>
   );
 };
 
