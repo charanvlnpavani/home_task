@@ -15,7 +15,6 @@ const PatientDetails = ({
     primary?: boolean;
   }[];
 }) => {
-  console.log("rendering PatientDetails", { patientName, dob, phonenumbers });
   return (
     <>
       <div>
